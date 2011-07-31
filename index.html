@@ -31,6 +31,7 @@
           <li><a href="#coffeescript">CoffeeScript</a></li>
           <li><a href="#html">HTML</a></li>
           <li><a href="#css">CSS</a></li>
+          <li><a href="#erlang">Erlang</a></li>
         </ul>
         <img width="12" height="25" src="/img/star.png" alt="HTML5 Navbar">
       </nav>
@@ -429,6 +430,40 @@ Because 'gray' could be #666 in firefox and #444 in IE.</li>
     border-radius: 15px;
     background: #fff url(../i/bg.png) no-repeat 0 0; }
 </code></pre>
+</section>
+
+<div class="tag-bar"><h2 id="erlang">Erlang</h2></div>
+<section class="cell big">
+<ul>
+  <li>Spend an hour reading the official <a href="http://www.erlang.se/doc/programming_rules.shtml">Programming Rules and Conventions</a>. Then follow it.</li>
+  <li>Use idiomatic Erlang and functional programming patterns.</li>
+  <li>Use types and function specifications and discrepancy analysis.</li>
+  <li>Avoid if-s, throw-s and catch-es whenever possible.</li>
+  <li>Always consider time and memory complexity:
+  <pre><code>
+%% DO NOT
+%% Since the ++ operator copies its left operand, the result will be copied again and again and again...
+%% leading to quadratic complexity.
+naive_reverse([H|T]) ->
+    naive_reverse(T)++[H];
+naive_reverse([]) ->
+    [].
+
+%% OK
+naive_but_ok_reverse([H|T], Acc) ->
+    naive_but_ok_reverse(T, [H]++Acc);
+naive_but_ok_reverse([], Acc) ->
+    Acc.
+
+%% DO
+%% This is slightly more efficient because you don't build a list element only to directly copy it.
+vanilla_reverse([H|T], Acc) ->
+    vanilla_reverse(T, [H|Acc]);
+vanilla_reverse([], Acc) ->
+    Acc.
+  </code></pre>
+  </li>
+</ul>
 </section>
     </div>
     <footer>
