@@ -222,11 +222,6 @@ if (typeof a === 'undefined') {
 // Bad.
 $('#contact').hide().filter(function() {return $(this).find('username').length;}).show();
 
-// Good.
-$('#contact').filter(function() {
-    return $(this).find('username').length;
-}).show();
-
 // Good too.
 $('#contact')
   .hide()
@@ -265,6 +260,7 @@ for (var i = 0, l = someList.length; i < l; i++) {
     OOP, lexical closures, list comprehensions ETC.</li>
     <li>Use @ instead of 'this'.</li>
     <li>Prefer 'true / false' for bool values instead of 'yes/no' / 'on/off'.</li>
+    <li>Use '== / !=' operators instead of 'is / isnt'.</li>
     <li>Always use brackets when calling a function. Exception is when you're
     passing long lambdas to functions.
       <pre>
