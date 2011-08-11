@@ -76,36 +76,36 @@ items = [dict(zip(('method', 'params'), i)) for i in params.items()]
     <li>Use Python 3 string formatting instead of old '%':
       <pre>
         <code># No.
-  '%s * %s = %s' % (item1, item2, item1 * item2)
-  '%(username): %(message)' % {'username': u, 'message': m}
+'%s * %s = %s' % (item1, item2, item1 * item2)
+'%(username): %(message)' % {'username': u, 'message': m}
 
-  # Yes.
-  '{} * {} = {}'.format(item1, item2, item1 * item2)
-  '{username}: {message}'.format(username=u, message=m)
+# Yes.
+'{} * {} = {}'.format(item1, item2, item1 * item2)
+'{username}: {message}'.format(username=u, message=m)
         </code>
       </pre>
     </li>
     <li>Use proper indentation:
       <pre>
         <code>
-  # Bad.
-  client = Client(
-      jid, password, jid.split('@').pop(), registercls=True
-  )
-  # Bad.
-  client = Client(jid, password, jid.split('@').pop(),
-      registercls=True)
+# Bad.
+client = Client(
+    jid, password, jid.split('@').pop(), registercls=True
+)
+# Bad.
+client = Client(jid, password, jid.split('@').pop(),
+    registercls=True)
 
-  # This is preferred.
-  client = Client(jid, password, jid.split('@').pop(),
-                  registercls=True)
+# This is preferred.
+client = Client(jid, password, jid.split('@').pop(),
+                registercls=True)
 
-  # If you can't do previous (ex.: >80 chars), do this:
-  client = Client(
-      jid, password,
-      jid.split('@').pop(),
-      registercls=True
-  )
+# If you can't do previous (ex.: >80 chars), do this:
+client = Client(
+    jid, password,
+    jid.split('@').pop(),
+    registercls=True
+)
         </code>
       </pre>
     </li>
@@ -122,114 +122,132 @@ items = [dict(zip(('method', 'params'), i)) for i in params.items()]
     <li>Single quotes are preferred over double. Reason: HTML uses double quotes.</li>
     <li>Use K&amp;R braces style.</li>
     <li>Always put braces in "if" statements, even in very short ones:
-  <pre><code>
-  // Good
-  if (a) {
-    ...
-  } else {
-    ...
-  }
+      <pre>
+        <code>
+// Good
+if (a) {
+  ...
+} else {
+  ...
+}
 
-  // Good
-  if (a) {
-    b = 6;
-  }
+// Good
+if (a) {
+  b = 6;
+}
 
-  item = somethingLong ?
-    something :
-    somethingOther;
-  </code></pre>
+// Try avoiding ternary operators, they're harder to debug.
+// But if you use, write them like this:
+item = somethingLong ?
+  something :
+  somethingOther;
+        </code>
+      </pre>
     </li>
     <li>Use one var per variable:
-    <pre><code>
-  var a = 5;
-  var b = 6;
-  var $this = $(this);
-  // Exception.
-  var a, b, c, d, $this;
-    </code></pre>
+    <pre>
+      <code>
+var a = 5;
+var b = 6;
+var $this = $(this);
+// Exception.
+var a, b, c, d, $this;
+      </code>
+    </pre>
   </li>
   <li>Use 'self' variable to push current context to the closures:
-    <pre><code>
-  var a = {
-   b: function() {
-     var self = this;
-     $(some).click(function(event) {
-       self.c();
-     });
-   }
-  };
-    </code></pre>
-    </li>
+    <pre>
+      <code>
+var a = {
+ b: function() {
+   var self = this;
+   $(some).click(function(event) {
+     self.c();
+   });
+ }
+};
+      </code>
+    </pre>
+  </li>
     <li>If you're using jQuery, each DOM manipulation should be made through it. Reason: jquery methods would remain compatible across browsers.
-    <pre><code>
-  // Good.
-  $('#item').val();
-  $(this).attr('class');
+      <pre>
+        <code>
+// Good.
+$('#item').val();
+$(this).attr('class');
 
-  // Bad.
-  this.className;
-  document.getElementById('item').value;
+// Bad.
+this.className;
+document.getElementById('item').value;
 
-  // Every event callback in jQuery should name event data variable as 'event'.
-  $('#item').click(function(event) {
-      $.storage.set('item', $(this).val());
-  });
-    </code></pre>
+// Every event callback in jQuery should name event data variable as 'event'.
+$('#item').click(function(event) {
+    $.storage.set('item', $(this).val());
+});
+        </code>
+      </pre>
     </li>
     <li>Do not use quotes in object keys:
-    <pre><code>
-  // Bad.
-  {'a': 'testtest'}
+      <pre>
+        <code>
+// Bad.
+{'a': 'testtest'}
 
-  // Good.
-  {a: 'testtest'}
+// Good.
+{a: 'testtest'}
 
-  // Exception: reserved word.
-  {'delete': 'testtest'}
-    </code></pre>
+// Exception: reserved word.
+{'delete': 'testtest'}
+        </code>
+      </pre>
     </li>
     <li>Use '===' for comparing instead of '=='. JavaScript is weakly typed language, so 5 == '5'. This ambiguity could lead to hard-to-find bugs.
-    <pre><code>
-  if (a === 5) {
-    ...
-  }
-  if ($(this).val() === 'something') {
-    ...
-  }
-  if (typeof a === 'undefined') {
-    ...
-  }
-    </code></pre>
+      <pre>
+        <code>
+if (a === 5) {
+  ...
+}
+if ($(this).val() === 'something') {
+  ...
+}
+if (typeof a === 'undefined') {
+  ...
+}
+        </code>
+      </pre>
     </li>
     <li>Other:
-    <pre><code>
-  // Bad.
-  $('#contact').hide().filter(function() {return $(this).find('username').length;}).show();
+      <pre>
+        <code>
+// Bad.
+$('#contact').hide().filter(function() {return $(this).find('username').length;}).show();
 
-  // Good.
-  $('#contact').filter(function() {
-      return $(this).find('username').length;
-  }).show();
+// Good.
+$('#contact').filter(function() {
+    return $(this).find('username').length;
+}).show();
 
-  // Good too.
-  $('#contact')
-    .hide()
-    .parent()
-    .toggleClass('selected')
-    .show();
-    </code></pre>
+// Good too.
+$('#contact')
+  .hide()
+  .parent()
+  .toggleClass('selected')
+  .show();
+        </code>
+      </pre>
     </li>
     <li>Use \!\! to convert something to boolean value:
-    <pre><code>
-  var loggedIn = !!$.cookie('user');
+      <pre>
+        <code>
+var loggedIn = !!$.cookie('user');
 
-  // Cache list length into a variable.
-  // You could afford 2x loop performance increase with this on some browsers.
-  for (var i = 0, l = someList.length; i < l; i++) {
-    doSomething(someList[i]);
-  }
-    </code></pre>
+// Cache list length into a variable.
+// You could afford 2x loop performance increase with this on some browsers.
+for (var i = 0, l = someList.length; i < l; i++) {
+  doSomething(someList[i]);
+}
+        </code>
+      </pre>
     </li>
   </ul>
 </section>
@@ -249,43 +267,49 @@ items = [dict(zip(('method', 'params'), i)) for i in params.items()]
     <li>Prefer 'true / false' for bool values instead of 'yes/no' / 'on/off'.</li>
     <li>Always use brackets when calling a function. Exception is when you're
     passing long lambdas to functions.
-  <pre><code>
-  # Brackets.
-  # Bad
-  @ajax path, data, 'get'
+      <pre>
+        <code>
+# Brackets.
+# Bad
+@ajax path, data, 'get'
 
-  # Good
-  @ajax(path, data, 'get')
-  </code></pre>
-  <pre><code>
-  # Bad
-  @fileToMultipart(fileInput, (fileData) ->
-    ...
-    longFunction
-    ...
-  )
+# Good
+@ajax(path, data, 'get')
+        </code>
+      </pre>
+      <pre>
+        <code>
+# Bad
+@fileToMultipart(fileInput, (fileData) ->
+  ...
+  longFunction
+  ...
+)
 
-  # Good
-  @fileToMultipart fileInput, (fileData) ->
-    ...
-    longFunction
-    ...
-  {code}
-  </code></pre>
+# Good
+@fileToMultipart fileInput, (fileData) ->
+  ...
+  longFunction
+  ...
+{code}
+        </code>
+      </pre>
     </li>
     <li>Don't use "body If statement" or "unless" statements in code:
-    <pre><code>
-    # Bad
-    return 5 unless a
-    number = -42 if opposite
+      <pre>
+        <code>
+# Bad
+return 5 unless a
+number = -42 if opposite
 
-    # Good
-    if not a
-      return 5
+# Good
+if not a
+  return 5
 
-    if opposite
-      number = -42
-    </code></pre>
+if opposite
+  number = -42
+        </code>
+      </pre>
     </li>
   </ul>
 </section>
@@ -318,139 +342,139 @@ items = [dict(zip(('method', 'params'), i)) for i in params.items()]
 
   <pre>
     <code>
-  /* Low performance selectors.
-     If you're developing a fat web-app with heavy use of CSS, selectors
-     optimization is extremely useful for improving page rendering speed.
-  **/
+/* Low performance selectors.
+   If you're developing a fat web-app with heavy use of CSS, selectors
+   optimization is extremely useful for improving page rendering speed.
+**/
 
-  /*
-  How browser handles selector 'ul li':
+/*
+How browser handles selector 'ul li':
 
-  * Get ALL page elements.
-  * Filter 'li'-s.
-  * Filter that elements from 'li'-s, where one of ancestors is 'ul'.
+* Get ALL page elements.
+* Filter 'li'-s.
+* Filter that elements from 'li'-s, where one of ancestors is 'ul'.
 
-  How browser handles selector '#main .contact-list-item':
+How browser handles selector '#main .contact-list-item':
 
-  * Get all elements with class 'contact-list-item'.
-  * Filter ones that has '#main' in ancestors.
-  * Much faster than previous.
+* Get all elements with class 'contact-list-item'.
+* Filter ones that has '#main' in ancestors.
+* Much faster than previous.
 
-  */
+*/
 
-  /* Slow */
-  ul li
-  /* Slow, but better than previous. */
-  ul > li
+/* Slow */
+ul li
+/* Slow, but better than previous. */
+ul > li
 
-  /* Very slow. */
-  ul li ul li strong
-  * #promo ul a
-  [data-hidden="true"]
-  div > [data-hidden="true"]
+/* Very slow. */
+ul li ul li strong
+* #promo ul a
+[data-hidden="true"]
+div > [data-hidden="true"]
 
-  /* Also bad, they're overly qualified. */
-  ul#top-nav
-  form#login
+/* Also bad, they're overly qualified. */
+ul#top-nav
+form#login
 
-  /* OK. */
-  #item .thing
-  .double.active
+/* OK. */
+#item .thing
+.double.active
 
 
-  /* Some webapp example. */
-  #login-page {
-    background: #d00; }
-    .login-form {
-      padding: 5px; }
-      #username, #password {
-        font-size: 0.9em; }
-      .button {
-        margin-left: 15px; }
+/* Some webapp example. */
+#login-page {
+  background: #d00; }
+  .login-form {
+    padding: 5px; }
+    #username, #password {
+      font-size: 0.9em; }
+    .button {
+      margin-left: 15px; }
 
-  #signup-page {
-    background: #0d0; }
-    .signup-button {
-      padding: 10px;
-      background-image: url(../img/signup.png); }
+#signup-page {
+  background: #0d0; }
+  .signup-button {
+    padding: 10px;
+    background-image: url(../img/signup.png); }
 
-  #chat-page {
-    font-size: 0.9em; }
-    #identity {
-      margin-bottom: 20px; }
-      #identity .profile {
-        height: 4em; }
-      #identity .nickname {
-        float: left;
-        width: 165px; }
-      #identity .avatar {
-        float: right; }
-      #identity .updates {
-        margin-top: 10px; }
-      #identity .status {
-        height: 30px; }
-      #identity .current-mood {
-        padding-left: 5px; }
-      #identity .button {
-        float: right; }
+#chat-page {
+  font-size: 0.9em; }
+  #identity {
+    margin-bottom: 20px; }
+    #identity .profile {
+      height: 4em; }
+    #identity .nickname {
+      float: left;
+      width: 165px; }
+    #identity .avatar {
+      float: right; }
+    #identity .updates {
+      margin-top: 10px; }
+    #identity .status {
+      height: 30px; }
+    #identity .current-mood {
+      padding-left: 5px; }
+    #identity .button {
+      float: right; }
 
-  /* Sequence of properties. */
-  .item {
-    font: 1em sans-serif;
-    font-family: Arial, sans-serif;
-    font-size: 1em;
-    font-weight: normal;
-    font-style: normal;
-    font-variant: normal;
+/* Sequence of properties. */
+.item {
+  font: 1em sans-serif;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
 
-    position: static;
-    z-index: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  position: static;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
-    display: block;
-    visibility: hidden;
-    float: none;
-    clear: none;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
+  display: block;
+  visibility: hidden;
+  float: none;
+  clear: none;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
 
-    box-sizing: content-box;
-    -moz-box-sizing: border-box;
-    width: auto;
-    min-width: 0;
-    max-width: 0;
-    height: auto;
-    min-height: 0;
-    max-height: 0;
-    margin: 0;
-    padding: 0;
+  box-sizing: content-box;
+  -moz-box-sizing: border-box;
+  width: auto;
+  min-width: 0;
+  max-width: 0;
+  height: auto;
+  min-height: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
 
-    table-layout: fixed;
-    empty-cells: show;
-    border-spacing: 0;
-    border-collapse: collapse;
-    list-style: none;
+  table-layout: fixed;
+  empty-cells: show;
+  border-spacing: 0;
+  border-collapse: collapse;
+  list-style: none;
 
-    content: '';
-    cursor: default;
-    text-align: left;
-    vertical-align: top;
-    line-height: 1;
-    white-space: normal;
-    text-decoration: none;
-    text-indent: 1;
-    text-transform: uppercase;
-    letter-spacing: 1;
-    word-spacing: normal;
+  content: '';
+  cursor: default;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1;
+  white-space: normal;
+  text-decoration: none;
+  text-indent: 1;
+  text-transform: uppercase;
+  letter-spacing: 1;
+  word-spacing: normal;
 
-    opacity: 1;
-    color: red;
-    border: 1px solid red;
-    border-radius: 15px;
-    background: #fff url(../i/bg.png) no-repeat 0 0; }
+  opacity: 1;
+  color: red;
+  border: 1px solid red;
+  border-radius: 15px;
+  background: #fff url(../i/bg.png) no-repeat 0 0; }
     </code>
   </pre>
 </section>
@@ -474,7 +498,8 @@ items = [dict(zip(('method', 'params'), i)) for i in params.items()]
     <li>Use types and function specifications and discrepancy analysis.</li>
     <li>Avoid if-s, throw-s and catch-es whenever possible.</li>
     <li>Always consider time and memory complexity:
-    <pre><code>
+      <pre>
+        <code>
 %% DO NOT
 %% Since the ++ operator copies its left operand, the result will be copied again and again and again...
 %% leading to quadratic complexity.
@@ -495,7 +520,32 @@ vanilla_reverse([H|T], Acc) ->
     vanilla_reverse(T, [H|Acc]);
 vanilla_reverse([], Acc) ->
     Acc.
-    </code></pre>
+        </code>
+      </pre>
+    </li>
+  </ul>
+</section>
+<div class="tag-bar">
+  <h2 id="other">Other</h2>
+</div>
+<section class="cell big">
+  <ul>
+    <li>
+      If you're using version control system like GIT / SVN, use past tense
+      in commit messages.
+      Start sentences with capital letter, end them with dot.
+      <pre>
+        <code>
+# Do
+Removed duplicate test block. Fixed #9913.
+Added autoindentation, closed #591, #555, #666.
+
+# Do NOT
+removes duplicate test block. fixes #9913
+fixing #5812
+add autoindentation, closes #12
+        </code>
+      </pre>
     </li>
   </ul>
 </section>
