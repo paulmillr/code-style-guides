@@ -25,277 +25,299 @@
         <img width="12" height="25" src="/img/star.png" alt="HTML5 Navbar">
         <h2>NAV</h2>
         <ul class="navigation-list">
-          <li><a href="#all-languages">All languages</a></li>
-          <li><a href="#python">Python</a></li>
-          <li><a href="#javascript">JavaScript</a></li>
-          <li><a href="#coffeescript">CoffeeScript</a></li>
-          <li><a href="#html">HTML</a></li>
-          <li><a href="#css">CSS</a></li>
-          <li><a href="#erlang">Erlang</a></li>
+          <!-- Automatically filled -->
         </ul>
         <img width="12" height="25" src="/img/star.png" alt="HTML5 Navbar">
       </nav>
     </header>
     <div id="main" role="main">
-<div class="tag-bar"><h2 id="all-languages">All languages</h2></div>
+
+<div class="tag-bar">
+  <h2 id="all-languages">All languages</h2>
+</div>
 <section class="cell big">
-<ul>
-  <li>Readability counts.</li>
-  <li>Be consistent.</li>
-  <li>Less code is better.</li>
-  <li>Code duplication is absolutely no-go.</li>
-  <li>Flat is better than nested.</li>
-  <li>Beautiful is better than ugly.</li>
-  <li>Simple is better than complex.</li>
-</ul>
+  <ul>
+    <li>Readability counts.</li>
+    <li>Be consistent.</li>
+    <li>Less code is better.</li>
+    <li>Code duplication is absolutely no-go.</li>
+    <li>Flat is better than nested.</li>
+    <li>Beautiful is better than ugly.</li>
+    <li>Simple is better than complex.</li>
+  </ul>
 </section>
 
-<div class="tag-bar"><h2 id="python">Python</h2></div>
+<div class="tag-bar">
+  <h2 id="python">Python</h2>
+</div>
 <section class="cell big">
-<ul>
-  <li>Follow official code style guide — <a href="http://www.python.org/dev/peps/pep-0008/">PEP8</a>.</li>
-  <li>Use introspection (dir() etc.).</li>
-  <li>Double quotes are preferred over single.</li>
-  <li>Always use the latest python you can.</li>
-  <li>Use list comprehensions instead of map()-s and filter()-s. They are clearer
-and in the most cases faster. Also python 3 maps/filters return iterators,
-nor lists.</li>
-  <li>Use python 3 string formatting instead of old '%'. It's a real string method,
-not type overloading spike.</li>
-  <li>Use list comprehensions instead of map()-s and filter()-s:
-<pre><code># Bad.
+  <ul>
+    <li>Follow official code style guide — <a href="http://www.python.org/dev/peps/pep-0008/">PEP8</a>.</li>
+    <li>Use introspection (dir() etc.).</li>
+    <li>Double quotes are preferred over single.</li>
+    <li>Always use the latest python you can.</li>
+    <li>Use list comprehensions instead of map()-s and filter()-s. They are clearer
+  and in the most cases faster. Also python 3 maps/filters return iterators,
+  nor lists.</li>
+    <li>Use python 3 string formatting instead of old '%'. It's a real string method,
+  not type overloading spike.</li>
+    <li>Use list comprehensions instead of map()-s and filter()-s:
+      <pre>
+        <code># Bad.
 items = map(lambda i: dict(zip(('method', 'params')), i), params.items())
 filter(lambda i: int(i) > 3, lst)
 
 # Good.
 items = [dict(zip(('method', 'params'), i)) for i in params.items()]
 [i for i in lst if int(i) > 3]
-</code></pre></li>
+        </code>
+      </pre>
+    </li>
+    <li>Use Python 3 string formatting instead of old '%':
+      <pre>
+        <code># No.
+  '%s * %s = %s' % (item1, item2, item1 * item2)
+  '%(username): %(message)' % {'username': u, 'message': m}
 
-  <li>Use Python 3 string formatting instead of old '%':
-<pre><code># No.
-'%s * %s = %s' % (item1, item2, item1 * item2)
-'%(username): %(message)' % {'username': u, 'message': m}
+  # Yes.
+  '{} * {} = {}'.format(item1, item2, item1 * item2)
+  '{username}: {message}'.format(username=u, message=m)
+        </code>
+      </pre>
+    </li>
+    <li>Use proper indentation:
+      <pre>
+        <code>
+  # Bad.
+  client = Client(
+      jid, password, jid.split('@').pop(), registercls=True
+  )
+  # Bad.
+  client = Client(jid, password, jid.split('@').pop(),
+      registercls=True)
 
-# Yes.
-'{} * {} = {}'.format(item1, item2, item1 * item2)
-'{username}: {message}'.format(username=u, message=m)
-</code></pre></li>
-<li>Use proper indentation:
-<pre><code>
-# Bad.
-client = Client(
-    jid, password, jid.split('@').pop(), registercls=True
-)
-# Bad.
-client = Client(jid, password, jid.split('@').pop(),
-    registercls=True)
+  # This is preferred.
+  client = Client(jid, password, jid.split('@').pop(),
+                  registercls=True)
 
-# This is preferred.
-client = Client(jid, password, jid.split('@').pop(),
-                registercls=True)
-
-# If you can't do previous (ex.: >80 chars), do this:
-client = Client(
-    jid, password,
-    jid.split('@').pop(),
-    registercls=True
-)
-</code></pre></li>
-</ul>
+  # If you can't do previous (ex.: >80 chars), do this:
+  client = Client(
+      jid, password,
+      jid.split('@').pop(),
+      registercls=True
+  )
+        </code>
+      </pre>
+    </li>
+  </ul>
 </section>
 
-<div class="tag-bar"><h2 id="javascript">JavaScript</h2></div>
+<div class="tag-bar">
+  <h2 id="javascript">JavaScript</h2>
+</div>
 <section class="cell big">
-<ul>
-  <li>Use two spaces indentation.</li>
-  <li>Use prototypes, split your app into modules / objects.</li>
-  <li>Single quotes are preferred over double. Reason: HTML uses double quotes.</li>
-  <li>Use K&amp;R braces style.</li>
-  <li>Always put braces in "if" statements, even in very short ones:
-<pre><code>
-// Good
-if (a) {
-  ...
-} else {
-  ...
-}
-
-// Good
-if (a) {
-  b = 6;
-}
-
-item = somethingLong ?
-  something :
-  somethingOther;
-</code></pre>
-</li>
-<li>Use one var per variable:
+  <ul>
+    <li>Use two spaces indentation.</li>
+    <li>Use prototypes, split your app into modules / objects.</li>
+    <li>Single quotes are preferred over double. Reason: HTML uses double quotes.</li>
+    <li>Use K&amp;R braces style.</li>
+    <li>Always put braces in "if" statements, even in very short ones:
   <pre><code>
-var a = 5;
-var b = 6;
-var $this = $(this);
-// Exception.
-var a, b, c, d, $this;
-  </code></pre>
-</li>
-<li>Use 'self' variable to push current context to the closures:
-  <pre><code>
-var a = {
- b: function() {
-   var self = this;
-   $(some).click(function(event) {
-     self.c();
-   });
- }
-};
-  </code></pre>
-</li>
-<li>If you're using jQuery, each DOM manipulation should be made through it. Reason: jquery methods would remain compatible across browsers.
-  <pre><code>
-// Good.
-$('#item').val();
-$(this).attr('class');
+  // Good
+  if (a) {
+    ...
+  } else {
+    ...
+  }
 
-// Bad.
-this.className;
-document.getElementById('item').value;
+  // Good
+  if (a) {
+    b = 6;
+  }
 
-// Every event callback in jQuery should name event data variable as 'event'.
-$('#item').click(function(event) {
-    $.storage.set('item', $(this).val());
-});
+  item = somethingLong ?
+    something :
+    somethingOther;
   </code></pre>
-</li>
-<li>Do not use quotes in object keys:
-  <pre><code>
-// Bad.
-{'a': 'testtest'}
+    </li>
+    <li>Use one var per variable:
+    <pre><code>
+  var a = 5;
+  var b = 6;
+  var $this = $(this);
+  // Exception.
+  var a, b, c, d, $this;
+    </code></pre>
+  </li>
+  <li>Use 'self' variable to push current context to the closures:
+    <pre><code>
+  var a = {
+   b: function() {
+     var self = this;
+     $(some).click(function(event) {
+       self.c();
+     });
+   }
+  };
+    </code></pre>
+    </li>
+    <li>If you're using jQuery, each DOM manipulation should be made through it. Reason: jquery methods would remain compatible across browsers.
+    <pre><code>
+  // Good.
+  $('#item').val();
+  $(this).attr('class');
 
-// Good.
-{a: 'testtest'}
+  // Bad.
+  this.className;
+  document.getElementById('item').value;
 
-// Exception: reserved word.
-{'delete': 'testtest'}
-  </code></pre>
-</li>
-<li>Use '===' for comparing instead of '=='. JavaScript is weakly typed language, so 5 == '5'. This ambiguity could lead to hard-to-find bugs.
-  <pre><code>
-if (a === 5) {
-  ...
-}
-if ($(this).val() === 'something') {
-  ...
-}
-if (typeof a === 'undefined') {
-  ...
-}
-  </code></pre>
-</li>
-<li>Other:
-  <pre><code>
-// Bad.
-$('#contact').hide().filter(function() {return $(this).find('username').length;}).show();
+  // Every event callback in jQuery should name event data variable as 'event'.
+  $('#item').click(function(event) {
+      $.storage.set('item', $(this).val());
+  });
+    </code></pre>
+    </li>
+    <li>Do not use quotes in object keys:
+    <pre><code>
+  // Bad.
+  {'a': 'testtest'}
 
-// Good.
-$('#contact').filter(function() {
-    return $(this).find('username').length;
-}).show();
+  // Good.
+  {a: 'testtest'}
 
-// Good too.
-$('#contact')
-  .hide()
-  .parent()
-  .toggleClass('selected')
-  .show();
-  </code></pre>
-</li>
-<li>Use \!\! to convert something to boolean value:
-  <pre><code>
-var loggedIn = !!$.cookie('user');
+  // Exception: reserved word.
+  {'delete': 'testtest'}
+    </code></pre>
+    </li>
+    <li>Use '===' for comparing instead of '=='. JavaScript is weakly typed language, so 5 == '5'. This ambiguity could lead to hard-to-find bugs.
+    <pre><code>
+  if (a === 5) {
+    ...
+  }
+  if ($(this).val() === 'something') {
+    ...
+  }
+  if (typeof a === 'undefined') {
+    ...
+  }
+    </code></pre>
+    </li>
+    <li>Other:
+    <pre><code>
+  // Bad.
+  $('#contact').hide().filter(function() {return $(this).find('username').length;}).show();
 
-// Cache list length into a variable.
-// You could afford 2x loop performance increase with this on some browsers.
-for (var i = 0, l = someList.length; i < l; i++) {
-  doSomething(someList[i]);
-}
-  </code></pre>
-</li>
-</ul>
+  // Good.
+  $('#contact').filter(function() {
+      return $(this).find('username').length;
+  }).show();
+
+  // Good too.
+  $('#contact')
+    .hide()
+    .parent()
+    .toggleClass('selected')
+    .show();
+    </code></pre>
+    </li>
+    <li>Use \!\! to convert something to boolean value:
+    <pre><code>
+  var loggedIn = !!$.cookie('user');
+
+  // Cache list length into a variable.
+  // You could afford 2x loop performance increase with this on some browsers.
+  for (var i = 0, l = someList.length; i < l; i++) {
+    doSomething(someList[i]);
+  }
+    </code></pre>
+    </li>
+  </ul>
 </section>
 
-<div class="tag-bar"><h2 id="coffeescript">Coffeescript</h2></div>
-
+<div class="tag-bar">
+  <h2 id="coffeescript">Coffeescript</h2>
+</div>
 <section class="cell big">
-<ul>
-<li>Two spaces indentation.</li>
-<li>Do not exceed 80 characters per line.</li>
-<li>Use single quotes in the most cases and double with templates.</li>
-<li>Separate class / object methods with 1 blank line. Exceptions are one-line methods.</li>
-<li>Use powerful language features: destructing assignments, string interpolation,
-OOP, lexical closures, list comprehensions ETC.</li>
-<li>Use @ instead of 'this'.</li>
-<li>Prefer 'true / false' for bool values instead of 'yes/no' / 'on/off'.</li>
-<li>Use brackets when calling a function. Exception is when you're
-passing long lambdas to functions.
-<pre><code>
-# Brackets.
-# Bad
-@ajax path, data, 'get'
-
-# Good
-@ajax(path, data, 'get')
-</code></pre>
-<pre><code>
-# Bad
-@fileToMultipart(fileInput, (fileData) ->
-  ...
-  longFunction
-  ...
-)
-
-# Good
-@fileToMultipart fileInput, (fileData) ->
-  ...
-  longFunction
-  ...
-{code}
-</code></pre>
-</li>
-<li>Use "body If statement" in short code:
+  <ul>
+    <li>Two spaces indentation.</li>
+    <li>Do not exceed 80 characters per line.</li>
+    <li>Use single quotes in the most cases and double with templates.</li>
+    <li>Separate class / object methods with 1 blank line. Exceptions are one-line methods.</li>
+    <li>Use powerful language features: destructing assignments, string interpolation,
+    OOP, lexical closures, list comprehensions ETC.</li>
+    <li>Use @ instead of 'this'.</li>
+    <li>Prefer 'true / false' for bool values instead of 'yes/no' / 'on/off'.</li>
+    <li>Always use brackets when calling a function. Exception is when you're
+    passing long lambdas to functions.
   <pre><code>
+  # Brackets.
+  # Bad
+  @ajax path, data, 'get'
+
   # Good
-  return 5 if not a
-  number = -42 if opposite
+  @ajax(path, data, 'get')
   </code></pre>
-</li>
-</ul>
+  <pre><code>
+  # Bad
+  @fileToMultipart(fileInput, (fileData) ->
+    ...
+    longFunction
+    ...
+  )
+
+  # Good
+  @fileToMultipart fileInput, (fileData) ->
+    ...
+    longFunction
+    ...
+  {code}
+  </code></pre>
+    </li>
+    <li>Don't use "body If statement" or "unless" statements in code:
+    <pre><code>
+    # Bad
+    return 5 unless a
+    number = -42 if opposite
+
+    # Good
+    if not a
+      return 5
+
+    if opposite
+      number = -42
+    </code></pre>
+    </li>
+  </ul>
 </section>
 
-<div class="tag-bar"><h2 id="html">HTML</h2></div>
+<div class="tag-bar">
+  <h2 id="html">HTML</h2>
+</div>
 <section class="cell big">
-<ul>
-<li>Two spaces indentation.</li>
-<li>Use HTML5.</li>
-<li>Use <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a></li>
-</ul>
+  <ul>
+    <li>Two spaces indentation.</li>
+    <li>Use HTML5.</li>
+    <li>Use <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a></li>
+  </ul>
 </section>
 
-<div class="tag-bar"><h2 id="css">CSS</h2></div>
+<div class="tag-bar">
+  <h2 id="css">CSS</h2>
+</div>
 <section class="cell big">
-<ul>
-<li>Two spaces indentation.</li>
-<li>Use CSS3 where you can.</li>
-<li>Use tree-style indentation</li>
-<li>Use one sequence of properties.</li>
-<li>Remember: browser handles selectors RIGHT-TO-LEFT</li>
-<li>Use hex colors (e.g. #fff) instead of color names (e.g. white).
-Because 'gray' could be #666 in firefox and #444 in IE.</li>
-<li><a href="http://sass-lang.com/">SASS</a> is ok.</li>
-</ul>
+  <ul>
+    <li>Two spaces indentation.</li>
+    <li>Use CSS3 where you can.</li>
+    <li>Use tree-style indentation</li>
+    <li>Use one sequence of properties.</li>
+    <li>Remember: browser handles selectors RIGHT-TO-LEFT</li>
+    <li>Use hex colors (e.g. #fff) instead of color names (e.g. white).
+    Because 'gray' could be #666 in firefox and #444 in IE.</li>
+    <li><a href="http://sass-lang.com/">SASS</a> is ok.</li>
+  </ul>
 
-<pre><code>
+  <pre>
+    <code>
   /* Low performance selectors.
      If you're developing a fat web-app with heavy use of CSS, selectors
      optimization is extremely useful for improving page rendering speed.
@@ -429,18 +451,30 @@ Because 'gray' could be #666 in firefox and #444 in IE.</li>
     border: 1px solid red;
     border-radius: 15px;
     background: #fff url(../i/bg.png) no-repeat 0 0; }
-</code></pre>
+    </code>
+  </pre>
 </section>
 
-<div class="tag-bar"><h2 id="erlang">Erlang</h2></div>
+<div class="tag-bar">
+  <h2 id="scala">Scala</h2>
+</div>
 <section class="cell big">
-<ul>
-  <li>Spend an hour reading the official <a href="http://www.erlang.se/doc/programming_rules.shtml">Programming Rules and Conventions</a>. Then follow it.</li>
-  <li>Use idiomatic Erlang and functional programming patterns.</li>
-  <li>Use types and function specifications and discrepancy analysis.</li>
-  <li>Avoid if-s, throw-s and catch-es whenever possible.</li>
-  <li>Always consider time and memory complexity:
-  <pre><code>
+  <ul>
+    <li>Follow <a href="http://davetron5000.github.com/scala-style/index.html">official language style guide</a>.</li>
+  </ul>
+</section>
+
+<div class="tag-bar">
+  <h2 id="erlang">Erlang</h2>
+</div>
+<section class="cell big">
+  <ul>
+    <li>Spend an hour reading the official <a href="http://www.erlang.se/doc/programming_rules.shtml">Programming Rules and Conventions</a>. Then follow it.</li>
+    <li>Use idiomatic Erlang and functional programming patterns.</li>
+    <li>Use types and function specifications and discrepancy analysis.</li>
+    <li>Avoid if-s, throw-s and catch-es whenever possible.</li>
+    <li>Always consider time and memory complexity:
+    <pre><code>
 %% DO NOT
 %% Since the ++ operator copies its left operand, the result will be copied again and again and again...
 %% leading to quadratic complexity.
@@ -461,9 +495,9 @@ vanilla_reverse([H|T], Acc) ->
     vanilla_reverse(T, [H|Acc]);
 vanilla_reverse([], Acc) ->
     Acc.
-  </code></pre>
-  </li>
-</ul>
+    </code></pre>
+    </li>
+  </ul>
 </section>
     </div>
     <footer>
@@ -478,6 +512,21 @@ vanilla_reverse([], Acc) ->
   <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
   <script src="/js/plugins.js"></script>
   <script src="/js/script.js"></script>
+  <script>
+  $(function() {
+    var $navlist = $('.navigation-list');
+    $(".tag-bar > h2[id]").each(function() {
+      var $this = $(this);
+      var text = $this.text();
+      var id = $this.attr('id');
+      var $link = $('<a/>');
+      $link.attr('href', '#' + id);
+      $link.text(text);
+      var $item = $('<li/>').append($link);
+      $navlist.append($item);
+    });
+  });
+  </script>
   <script>
     var _gaq=[['_setAccount','UA-24631902-1'],['_trackPageview'],['_trackPageLoadTime']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
