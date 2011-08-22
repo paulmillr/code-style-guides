@@ -63,7 +63,8 @@
   not type overloading spike.</li>
     <li>Use list comprehensions instead of map()-s and filter()-s:
       <pre>
-        <code># Bad.
+        <code>
+# Bad.
 items = map(lambda i: dict(zip(('method', 'params')), i), params.items())
 filter(lambda i: int(i) > 3, lst)
 
@@ -75,7 +76,8 @@ items = [dict(zip(('method', 'params'), i)) for i in params.items()]
     </li>
     <li>Use Python 3 string formatting instead of old '%':
       <pre>
-        <code># No.
+        <code>
+# No.
 '%s * %s = %s' % (item1, item2, item1 * item2)
 '%(username): %(message)' % {'username': u, 'message': m}
 
@@ -182,7 +184,7 @@ document.getElementById('item').value;
 
 // Every event callback in jQuery should name event data variable as 'event'.
 $('#item').click(function(event) {
-    $.storage.set('item', $(this).val());
+  $.storage.set('item', $(this).val());
 });
         </code>
       </pre>
@@ -213,6 +215,11 @@ if ($(this).val() === 'something') {
 if (typeof a === 'undefined') {
   ...
 }
+
+// Exception: this compares both to 'null' and 'undefined'.
+if (item == null) {
+  
+}
         </code>
       </pre>
     </li>
@@ -222,7 +229,7 @@ if (typeof a === 'undefined') {
 // Bad.
 $('#contact').hide().filter(function() {return $(this).find('username').length;}).show();
 
-// Good too.
+// Good.
 $('#contact')
   .hide()
   .parent()
@@ -231,13 +238,17 @@ $('#contact')
         </code>
       </pre>
     </li>
-    <li>Use \!\! to convert something to boolean value:
+    <li>Use "!!" to convert something to boolean value:
       <pre>
         <code>
 var loggedIn = !!$.cookie('user');
-
-// Cache list length into a variable.
-// You could afford 2x loop performance increase with this on some browsers.
+        </code>
+      </pre>
+    </li>
+    <li>Cache list length into a variable.
+      You could afford 2x loop performance increase with this on some browsers.
+      <pre>
+        <code>
 for (var i = 0, l = someList.length; i < l; i++) {
   doSomething(someList[i]);
 }
@@ -287,7 +298,6 @@ for (var i = 0, l = someList.length; i < l; i++) {
   ...
   longFunction
   ...
-{code}
         </code>
       </pre>
     </li>
@@ -331,9 +341,7 @@ if opposite
     <li>Use tree-style indentation</li>
     <li>Use one sequence of properties.</li>
     <li>Remember: browser handles selectors RIGHT-TO-LEFT</li>
-    <li>Use hex colors (e.g. #fff) instead of color names (e.g. white).
-    Because 'gray' could be #666 in firefox and #444 in IE.</li>
-    <li><a href="http://sass-lang.com/">SASS</a> is ok.</li>
+    <li>Use hex colors (e.g. #fff) instead of color names (e.g. white).</li>
   </ul>
 
   <pre>
@@ -553,7 +561,7 @@ add autoindentation, closes #12
       </p>
       <p id="design-copyright">Visual design of this page is taken from <a href="http://www.w3.org/html/logo/">html5 logo presentation</a> under <a href="http://creativecommons.org/licenses/by/3.0/">CC-BY</a>.</p>
     </footer>
-  </div> <!--! end of #container -->
+  </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
   <script src="/js/plugins.js"></script>
