@@ -267,56 +267,7 @@ for (var i = 0, l = someList.length; i < l; i++) {
     <li>Do not exceed 80 characters per line.</li>
     <li>Use single quotes in the most cases and double with templates.</li>
     <li>Separate class / object methods with 1 blank line. Exceptions are one-line methods.</li>
-    <li>Use powerful language features: destructing assignments, string interpolation,
-    OOP, lexical closures, list comprehensions ETC.</li>
     <li>Use @ instead of 'this'.</li>
-    <li>Prefer 'true / false' for bool values instead of 'yes/no' / 'on/off'.</li>
-    <li>Use '== / !=' operators instead of 'is / isnt'.</li>
-    <li>Always use brackets when calling a function. Exception is when you're
-    passing long lambdas to functions.
-      <pre>
-        <code>
-# Brackets.
-# Bad
-@ajax path, data, 'get'
-
-# Good
-@ajax(path, data, 'get')
-        </code>
-      </pre>
-      <pre>
-        <code>
-# Bad
-@fileToMultipart(fileInput, (fileData) ->
-  ...
-  longFunction
-  ...
-)
-
-# Good
-@fileToMultipart fileInput, (fileData) ->
-  ...
-  longFunction
-  ...
-        </code>
-      </pre>
-    </li>
-    <li>Don't use "body If statement" or "unless" statements in code:
-      <pre>
-        <code>
-# Bad
-return 5 unless a
-number = -42 if opposite
-
-# Good
-if not a
-  return 5
-
-if opposite
-  number = -42
-        </code>
-      </pre>
-    </li>
   </ul>
 </section>
 
