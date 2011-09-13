@@ -4,5 +4,5 @@ Code style guides for various programming languages
 
 ## Contributors
 
-Paul Miller
-[Oleg Smirnov](http://nord.org.ua)
+- Paul Miller
+- [Oleg Smirnov](http://nord.org.ua)
