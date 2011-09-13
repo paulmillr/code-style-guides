@@ -486,19 +486,29 @@ vanilla_reverse([], Acc) ->
 <section class="cell big">
   <ul>
     <li>
-      If you're using version control system like GIT / SVN, use past tense
-      in commit messages.
-      Start sentences with capital letter, end them with dot.
+    Structure your commit message like this:
+
       <pre>
         <code>
-# Do
-Removed duplicate test block. Fixed #9913.
-Added autoindentation, closed #591, #555, #666.
+One line summary (less than 50 characters)
 
-# Do NOT
-removes duplicate test block. fixes #9913
-fixing #5812
-add autoindentation, closes #12
+Longer description (wrap at 72 characters)
+
+Summary:
+- Less than 50 characters:
+- What was changed
+- Imperative present tense (fix, add, change): (Fix bug 123,
+Add 'foobar' command, Change default timeout to 123)
+- End with period
+
+Description:
+- Wrap at 72 characters
+- Why, explain intention and implementation approach
+- Present tense
+
+Atomicity:
+- Break up logical changes
+- Make whitespace changes separately
         </code>
       </pre>
     </li>
