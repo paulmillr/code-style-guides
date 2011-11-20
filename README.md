@@ -24,25 +24,24 @@ not type overloading spike.
 
     ```python
     # Bad.
-    items = map(lambda i: dict(zip(('method', 'params')), i), params.items())
+    items = map(lambda i: dict(zip(("method", "params")), i), params.items())
     filter(lambda i: int(i) > 3, lst)
 
     # Good.
-    items = [dict(zip(('method', 'params'), i)) for i in params.items()]
+    items = [dict(zip(("method", "params"), i)) for i in params.items()]
     [i for i in lst if int(i) > 3]
-            </code>
-          </pre>
-        </li>
-        <li>Use Python 3 string formatting instead of old '%':
-          <pre>
-            <code>
+```
+
+* Use Python 3 string formatting instead of old "%"
+
+    ```python
     # No.
-    '%s * %s = %s' % (item1, item2, item1 * item2)
-    '%(username): %(message)' % {'username': u, 'message': m}
+    "%s * %s = %s" % (item1, item2, item1 * item2)
+    "%(username): %(message)" % {"username": u, "message": m}
 
     # Yes.
-    '{} * {} = {}'.format(item1, item2, item1 * item2)
-    '{username}: {message}'.format(username=u, message=m)
+    "{} * {} = {}".format(item1, item2, item1 * item2)
+    "{username}: {message}".format(username=u, message=m)
     ```
 
 * Use proper indentation:
@@ -50,20 +49,20 @@ not type overloading spike.
     ```python
     # Bad.
     client = Client(
-        jid, password, jid.split('@').pop(), registercls=True
+        jid, password, jid.split("@").pop(), registercls=True
     )
     # Bad.
-    client = Client(jid, password, jid.split('@').pop(),
+    client = Client(jid, password, jid.split("@").pop(),
         registercls=True)
 
     # This is preferred.
-    client = Client(jid, password, jid.split('@').pop(),
+    client = Client(jid, password, jid.split("@").pop(),
                     registercls=True)
 
-    # If you can't do previous (ex.: >80 chars), do this:
+    # If you can"t do previous (ex.: >80 chars), do this:
     client = Client(
         jid, password,
-        jid.split('@').pop(),
+        jid.split("@").pop(),
         registercls=True
     )
     ```
