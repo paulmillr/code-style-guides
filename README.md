@@ -67,6 +67,10 @@ not type overloading spike.
     )
     ```
 
+### Ruby
+
+* Follow [bbatsov/ruby-style-guide](https://github.com/bbatsov/ruby-style-guide).
+
 ### JavaScript
 * Use two spaces indentation.
 * Use prototypes, split your app into modules / objects.
@@ -202,6 +206,7 @@ increase with this on some browsers.
 * Use single quotes when you're not interpolating strings
 * Separate class / object methods with 1 blank line. Exceptions are one-line methods.
 * Use @ instead of 'this'. Exception: standalone `@`.
+* Calling functions without parentheses is preferred in the most cases.
 
 ### HTML
 * Two spaces indentation
@@ -322,6 +327,13 @@ form#login
   border-collapse: collapse;
   list-style: none;
 
+  font: 1em sans-serif;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+
   content: "";
   cursor: default;
   text-align: left;
@@ -333,13 +345,6 @@ form#login
   text-transform: uppercase;
   letter-spacing: 1;
   word-spacing: normal;
-
-  font: 1em sans-serif;
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
 
   opacity: 1;
   color: #d00;
