@@ -71,10 +71,11 @@ not type overloading spike.
 ### Ruby
 
 * Follow [bbatsov/ruby-style-guide](https://github.com/bbatsov/ruby-style-guide).
+* Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
 
 ### JavaScript
 * Use two spaces indentation.
-* Use prototypes, split your app into modules / objects.
+* Split your app into modules / objects.
 * Single quotes are preferred over double. Reason: HTML uses double quotes.
 * Use K&R braces style.
 * Always put braces in "if" statements, even in very short ones:
@@ -198,7 +199,7 @@ language, so 5 == '5'. This ambiguity could lead to hard-to-find bugs.
 increase with this on some browsers.
 
     ```
-    for (var i = 0, l = someList.length; i < l; i++) {
+    for (var i = 0, length = someList.length; i < length; i++) {
       doSomething(someList[i]);
     }
     ```
@@ -209,6 +210,7 @@ increase with this on some browsers.
 ### CoffeeScript
 * Follow
 [polarmobile/coffeescript-style-guide](https://github.com/polarmobile/coffeescript-style-guide).
+* Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
 * Calling functions without parentheses is preferred in the most cases.
 * Limit lines to 80 chars.
 
