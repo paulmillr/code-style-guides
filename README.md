@@ -9,6 +9,7 @@ Code style guides for various programming languages
 * Flat is better than nested.
 * Beautiful is better than ugly.
 * Simple is better than complex.
+* Add blank line to the end of every file.
 
 ## Python
 * Follow official code style guide — PEP8.
@@ -133,7 +134,8 @@ Reason: jquery methods would remain compatible across browsers.
     this.className;
     document.getElementById('item').value;
 
-    // Every event callback in jQuery should name event data variable as 'event'.
+    // Every event callback in jQuery should name event data variable as
+    // 'event'.
     $('#item').click(function(event) {
       $.storage.set('item', $(this).val());
     });
@@ -201,12 +203,14 @@ increase with this on some browsers.
     }
     ```
 
+* Extending native objects is OK if you're doing it properly
+(with Object.defineProperty).
+
 ### CoffeeScript
-* Two spaces indentation.
-* Use single quotes when you're not interpolating strings
-* Separate class / object methods with 1 blank line. Exceptions are one-line methods.
-* Use @ instead of 'this'. Exception: standalone `@`.
+* Follow
+[polarmobile/coffeescript-style-guide](https://github.com/polarmobile/coffeescript-style-guide).
 * Calling functions without parentheses is preferred in the most cases.
+* Limit lines to 80 chars.
 
 ### HTML
 * Two spaces indentation
@@ -400,7 +404,8 @@ form#login
 * Commit summary:
     * Less than 50 characters
     * What was changed
-    * Imperative present tense (fix, add, change): ("Fix bug 123", "Add 'foobar' command, "Change default timeout to 123")
+    * Imperative present tense (fix, add, change): ("Fix bug 123", "Add 
+    'foobar' command, "Change default timeout to 123")
     * End with period
 * Commit description:
     * Wrap at 72 characters
@@ -419,8 +424,20 @@ The MIT License (MIT)
 
 Copyright (c) 2011 Paul Miller
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
