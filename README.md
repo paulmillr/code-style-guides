@@ -1,38 +1,48 @@
 # Code style guides
 Code style guides for various programming languages
 
+## Table of contents
+
+* [All languages](#all-languages)
+* [CoffeeScript](#coffeescript)
+* [Ruby](#ruby)
+* [Python](#python)
+* [JavaScript](#javascript)
+* [Scala](#scala)
+* [Erlang](#erlang)
+* [Other](#other)
+* [License](#license)
+
+<a name="all-languages"></a>
 ### All languages
 * Readability counts.
 * Be consistent.
-* Less code is better.
-* Code duplication is absolutely no-go.
+* [Don't repeat yourself](http://en.wikipedia.org/wiki/Don't_repeat_yourself).
 * Flat is better than nested.
 * Beautiful is better than ugly.
 * Simple is better than complex.
 * Add blank line to the end of every file.
 
-## Python
-* Follow official code style guide — PEP8.
-* Use introspection (dir() etc.).
+<a name="coffeescript"></a>
+### CoffeeScript
+* Follow
+[polarmobile/coffeescript-style-guide](https://github.com/polarmobile/coffeescript-style-guide).
+* Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
+* Calling functions without parentheses is preferred in the most cases.
+* Limit lines to 80 chars.
+
+<a name="ruby"></a>
+### Ruby
+* Follow [bbatsov/ruby-style-guide](https://github.com/bbatsov/ruby-style-guide).
+* Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
+
+<a name="python"></a>
+### Python
+* Follow official code style guide — [PEP8](http://www.python.org/dev/peps/pep-0008/).
 * Double quotes are preferred over single.
-* Always use the latest python you can.
 * Use list comprehensions instead of map()-s and filter()-s. They are clearer
 and in the most cases faster. Also python 3 maps/filters return iterators,
 nor lists.
-* Use python 3 string formatting instead of old '%'. It's a real string method,
-not type overloading spike.
-* Use list comprehensions instead of map()-s and filter()-s:
-
-    ```python
-    # Bad.
-    items = map(lambda i: dict(zip(("method", "params")), i), params.items())
-    filter(lambda i: int(i) > 3, lst)
-
-    # Good.
-    items = [dict(zip(("method", "params"), i)) for i in params.items()]
-    [i for i in lst if int(i) > 3]
-```
-
 * Use Python 3 string formatting instead of old "%"
 
     ```python
@@ -60,7 +70,7 @@ not type overloading spike.
     client = Client(jid, password, jid.split("@").pop(),
                     registercls=True)
 
-    # If you can"t do previous (ex.: >80 chars), do this:
+    # If you can't do previous (ex.: >80 chars), do this:
     client = Client(
         jid, password,
         jid.split("@").pop(),
@@ -68,39 +78,53 @@ not type overloading spike.
     )
     ```
 
-### Ruby
-
-* Follow [bbatsov/ruby-style-guide](https://github.com/bbatsov/ruby-style-guide).
-* Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
-
+<a name="javascript"></a>
 ### JavaScript
-* Use two spaces indentation.
+* Two spaces indentation.
 * Split your app into modules / objects.
 * Single quotes are preferred over double. Reason: HTML uses double quotes.
-* Use K&R braces style.
-* Always put braces in "if" statements, even in very short ones:
+* Use `void 0` instead of `undefined`, because `undefined` could have been
+redefined.
+* Don't use function statements. Instead, create anonymous functions and
+assing them to vars.
 
     ```javascript
-    // Good
+    // No
+    function doThing(a, b) {return a * b;}
+
+    // Yes
+    var doThing = function(a, b) {return a * b;}; 
+    ```
+
+* Avoid global vars where you can. If you use them, specify it explicitly.
+    
+    ```javascript
+    window.globalVar = ...;
+    ```
+
+* Try avoiding ternary operators, they're harder to debug.
+* Use K&R braces style.
+
+    ```javascript
+    // No
+    if (a)
+    {
+      ...;
+    }
+    else
+    {
+      ...
+    }
+
+    // Yes
     if (a) {
       ...
     } else {
       ...
     }
-
-    // Good
-    if (a) {
-      b = 6;
-    }
-
-    // Try avoiding ternary operators, they're harder to debug.
-    // But if you use, write them like this:
-    item = somethingLong ?
-      something :
-      somethingOther;
     ```
 
-* Use one var per variable:
+* Use one `var` per variable.
 
     ```javascript
     var a = 5;
@@ -110,12 +134,12 @@ not type overloading spike.
     var a, b, c, d, $this;
     ```
 
-* Use 'self' variable to push current context to the closures:
+* Use '_this' variable to push current context to the closures.
 
     ```javascript
     var a = {
      b: function() {
-       var self = this;
+       var _this = this;
        $(some).click(function(event) {
          self.c();
        });
@@ -127,22 +151,24 @@ not type overloading spike.
 Reason: jquery methods would remain compatible across browsers.
 
     ```javascript
-    // Good.
-    $('#item').val();
-    $(this).attr('class');
-
     // Bad.
     this.className;
     document.getElementById('item').value;
 
-    // Every event callback in jQuery should name event data variable as
-    // 'event'.
+    // Good.
+    $('#item').val();
+    $(this).attr('class');
+    ```
+
+* Event callback should name event data variable as 'event', not 'e' etc.
+
+    ```javascript
     $('#item').click(function(event) {
       $.storage.set('item', $(this).val());
     });
     ```
 
-* Do not use quotes in object keys:
+* Do not use quotes in object keys.
 
     ```javascript
     // Bad.
@@ -198,175 +224,146 @@ language, so 5 == '5'. This ambiguity could lead to hard-to-find bugs.
 * Cache list length into a variable. You could afford 2x loop performance
 increase with this on some browsers.
 
-    ```
+    ```javascript
     for (var i = 0, length = someList.length; i < length; i++) {
       doSomething(someList[i]);
     }
     ```
 
-* Extending native objects is OK if you're doing it properly
-(with Object.defineProperty).
+* Avoid bitwise operators if possible.
+* Avoid `with`, `continue`, implied typecasting.
 
-### CoffeeScript
-* Follow
-[polarmobile/coffeescript-style-guide](https://github.com/polarmobile/coffeescript-style-guide).
-* Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
-* Calling functions without parentheses is preferred in the most cases.
-* Limit lines to 80 chars.
-
+<a name="html"></a>
 ### HTML
-* Two spaces indentation
+* Two spaces indentation.
 
+<a name="css"></a>
 ### CSS
 * Two spaces indentation.
-* Use CSS3 where you can.
-* Use tree-style indentation
-* Use one sequence of properties.
-* Remember: browser handles selectors RIGHT-TO-LEFT
 * Use hex colors (e.g. #fff) instead of color names (e.g. white).
+* Don't use inline styling.
+* Use tree-style indentation.
 
-```css
-/* Low performance selectors.
-   If you're developing a fat web-app with heavy use of CSS, selectors
-   optimization is extremely useful for improving page rendering speed.
-**/
+    ```css
+    .signup-page {
+      background: #0d0; }
+      .signup-button {
+        padding: 10px;
+        background-image: url("../img/signup.png"); }
 
-/*
-How browser handles selector 'ul li':
-
-* Get ALL page elements.
-* Filter 'li'-s.
-* Filter that elements from 'li'-s, where one of ancestors is 'ul'.
-
-How browser handles selector '#main .contact-list-item':
-
-* Get all elements with class 'contact-list-item'.
-* Filter ones that has '#main' in ancestors.
-* Much faster than previous.
-
-*/
-
-/* Slow */
-ul li
-/* Slow, but better than previous. */
-ul > li
-
-/* Very slow. */
-ul li ul li strong
-* #promo ul a
-[data-hidden="true"]
-div > [data-hidden="true"]
-
-/* Also bad, they're overly qualified. */
-ul#top-nav
-form#login
-
-/* OK. */
-.double.active
-
-
-/* Example. */
-.login-page {
-  background: #d00; }
-  .login-form {
-    padding: 5px; }
-    .username, .password {
+    .chat-page {
       font-size: 0.9em; }
-    .button {
-      margin-left: 15px; }
+      .identity {
+        margin-bottom: 20px; }
+        .identity-profile {
+          height: 4em; }
+        .identity-nickname {
+          float: left;
+          width: 165px; }
+        .identity-avatar {
+          float: right; }
+        .identity-updates {
+          margin-top: 10px; }
+        .identity-status {
+          height: 30px; }
+        .identity-current-mood {
+          padding-left: 5px; }
+        .identity-button {
+          float: right; }
+    ```
 
-.signup-page {
-  background: #0d0; }
-  .signup-button {
-    padding: 10px;
-    background-image: url("../img/signup.png"); }
+* Use this sequence of properties
 
-.chat-page {
-  font-size: 0.9em; }
-  .identity {
-    margin-bottom: 20px; }
-    .identity .profile {
-      height: 4em; }
-    .identity .nickname {
-      float: left;
-      width: 165px; }
-    .identity .avatar {
-      float: right; }
-    .identity .updates {
-      margin-top: 10px; }
-    .identity .status {
-      height: 30px; }
-    .identity .current-mood {
-      padding-left: 5px; }
-    .identity .button {
-      float: right; }
+    ```css
+    .item {
+      position: static;
+      z-index: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
 
-/* Sequence of properties. */
-.item {
-  position: static;
-  z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+      display: block;
+      visibility: hidden;
+      float: none;
+      clear: none;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
 
-  display: block;
-  visibility: hidden;
-  float: none;
-  clear: none;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
+      box-sizing: content-box;
+      width: auto;
+      min-width: 0;
+      max-width: 0;
+      height: auto;
+      min-height: 0;
+      max-height: 0;
+      margin: 0;
+      padding: 0;
 
-  box-sizing: content-box;
-  width: auto;
-  min-width: 0;
-  max-width: 0;
-  height: auto;
-  min-height: 0;
-  max-height: 0;
-  margin: 0;
-  padding: 0;
+      table-layout: fixed;
+      empty-cells: show;
+      border-spacing: 0;
+      border-collapse: collapse;
+      list-style: none;
 
-  table-layout: fixed;
-  empty-cells: show;
-  border-spacing: 0;
-  border-collapse: collapse;
-  list-style: none;
+      font: 1em sans-serif;
+      font-family: Arial, sans-serif;
+      font-size: 1em;
+      font-weight: normal;
+      font-style: normal;
+      font-variant: normal;
 
-  font: 1em sans-serif;
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
+      content: "";
+      cursor: default;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1;
+      white-space: normal;
+      text-decoration: none;
+      text-indent: 1;
+      text-transform: uppercase;
+      letter-spacing: 1;
+      word-spacing: normal;
 
-  content: "";
-  cursor: default;
-  text-align: left;
-  vertical-align: top;
-  line-height: 1;
-  white-space: normal;
-  text-decoration: none;
-  text-indent: 1;
-  text-transform: uppercase;
-  letter-spacing: 1;
-  word-spacing: normal;
+      opacity: 1;
+      color: #d00;
+      text-shadow: 5px 5px 5px #d59;
+      border: 1px solid #d00;
+      border-radius: 15px;
+      box-shadow: inset 1px 0 0 #fff;
+      background: #fff url("../i/bg.png") no-repeat 0 0; }
+    ```
 
-  opacity: 1;
-  color: #d00;
-  text-shadow: 5px 5px 5px #d59;
-  border: 1px solid #d00;
-  border-radius: 15px;
-  box-shadow: inset 1px 0 0 #fff;
-  background: #fff url("../i/bg.png") no-repeat 0 0; }
-```
+* Remember: browser handles selectors RIGHT-TO-LEFT.
 
+    ```css
+    /* Slow */
+    ul li
+    /* Slow, but better than previous. */
+    ul > li
+
+    /* Very slow. */
+    ul li ul li strong
+    * #promo ul a
+    [data-hidden="true"]
+    div > [data-hidden="true"]
+
+    /* Also bad, they're overly qualified. */
+    ul#top-nav
+    form#login
+
+    /* OK. */
+    .double.active
+    #thing
+    ```
+
+<a name="scala"></a>
 ### Scala
 * Follow [official language style guide](http://davetron5000.github.com/scala-style/index.html).
 
+<a name="erlang"></a>
 ### Erlang
-* Spend an hour reading the official Programming Rules and Conventions. Then follow it.
-* Use idiomatic Erlang and functional programming patterns.
+* Follow the official [Programming Rules and Conventions](http://www.erlang.se/doc/programming_rules.shtml).
 * Use types and function specifications and discrepancy analysis.
 * Avoid if-s, throw-s and catch-es whenever possible.
 * Always consider time and memory complexity:
@@ -394,6 +391,7 @@ form#login
         Acc.
     ```
 
+<a name="other"></a>
 ### Other
 * Structure your commit message like this:
 
@@ -417,10 +415,7 @@ form#login
     * Break up logical changes
     * Make whitespace changes separately
 
-## Contributors
-* Paul Miller
-* [Oleg Smirnov](http://nord.org.ua)
-
+<a name="license"></a>
 ## License
 The MIT License (MIT)
 
