@@ -46,11 +46,11 @@ nor lists.
 * Use Python 3 string formatting instead of old "%"
 
     ```python
-    # No.
+    # No
     "%s * %s = %s" % (item1, item2, item1 * item2)
     "%(username): %(message)" % {"username": u, "message": m}
 
-    # Yes.
+    # Yes
     "{} * {} = {}".format(item1, item2, item1 * item2)
     "{username}: {message}".format(username=u, message=m)
     ```
@@ -58,11 +58,11 @@ nor lists.
 * Use proper indentation:
 
     ```python
-    # Bad.
+    # No
     client = Client(
         jid, password, jid.split("@").pop(), registercls=True
     )
-    # Bad.
+    # No
     client = Client(jid, password, jid.split("@").pop(),
         registercls=True)
 
@@ -151,11 +151,11 @@ assing them to vars.
 Reason: jquery methods would remain compatible across browsers.
 
     ```javascript
-    // Bad.
+    // No
     this.className;
     document.getElementById('item').value;
 
-    // Good.
+    // Yes
     $('#item').val();
     $(this).attr('class');
     ```
@@ -171,10 +171,10 @@ Reason: jquery methods would remain compatible across browsers.
 * Do not use quotes in object keys.
 
     ```javascript
-    // Bad.
+    // No
     {'a': 'testtest'}
 
-    // Good.
+    // Yes
     {a: 'testtest'}
 
     // Exception: reserved word.
@@ -204,10 +204,10 @@ language, so 5 == '5'. This ambiguity could lead to hard-to-find bugs.
 * Other:
 
     ```javascript
-    // Bad.
+    // No
     $('#contact').hide().filter(function() {return $(this).find('username').length;}).show();
 
-    // Good.
+    // Yes
     $('#contact')
       .hide()
       .parent()
@@ -334,7 +334,7 @@ increase with this on some browsers.
       background: #fff url("../i/bg.png") no-repeat 0 0; }
     ```
 
-* Remember: browser handles selectors RIGHT-TO-LEFT.
+* Remember: browser handles selectors RIGHT-TO-LEFT. Write efficient selectors.
 
     ```css
     /* Slow */
@@ -344,7 +344,6 @@ increase with this on some browsers.
 
     /* Very slow. */
     ul li ul li strong
-    * #promo ul a
     [data-hidden="true"]
     div > [data-hidden="true"]
 
@@ -366,7 +365,7 @@ increase with this on some browsers.
 * Follow the official [Programming Rules and Conventions](http://www.erlang.se/doc/programming_rules.shtml).
 * Use types and function specifications and discrepancy analysis.
 * Avoid if-s, throw-s and catch-es whenever possible.
-* Always consider time and memory complexity:
+* Always consider time and memory complexity.
 
     ```erlang
     %% DO NOT
