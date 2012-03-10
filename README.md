@@ -30,6 +30,13 @@ Code style guides for various programming languages
 * Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
 * Calling functions without parentheses is preferred in the most cases.
 * Limit lines to 80 chars.
+* Write code in a functional style. Less side effects == less errors. Examples:
+    * Use array methods (`Array::forEach`, `Array::filter` etc.) instead of
+    `for..in` loops. `for` loops don't create scope so it's easier to
+    introduce bugs. `Object.keys()` are preferred to `for..of`.
+    * Avoid `break`-s and `continue`-s (which are rebranded GOTOs).
+    * Try to not redefine vars where it's possible.
+    * Same applies to JavaScript.
 
 <a name="ruby"></a>
 ### Ruby
@@ -147,8 +154,8 @@ assing them to vars.
     };
     ```
 
-* If you're using jQuery, each DOM manipulation should be made through it.
-Reason: jquery methods would remain compatible across browsers.
+* If you're using jQuery (etc), each DOM manipulation should be made through it.
+Reason: library methods would remain compatible across browsers.
 
     ```javascript
     // No
@@ -418,7 +425,7 @@ increase with this on some browsers.
 ## License
 The MIT License (MIT)
 
-Copyright (c) Paul Miller
+Copyright (c) Paul Miller (http://paulmillr.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
