@@ -46,22 +46,6 @@ Code style guides for various programming languages
 <a name="python"></a>
 ### Python
 * Follow official code style guide — [PEP8](http://www.python.org/dev/peps/pep-0008/).
-* Double quotes are preferred over single.
-* Use list comprehensions instead of map()-s and filter()-s. They are clearer
-and in the most cases faster. Also python 3 maps/filters return iterators,
-nor lists.
-* Use Python 3 string formatting instead of old "%"
-
-    ```python
-    # No
-    "%s * %s = %s" % (item1, item2, item1 * item2)
-    "%(username): %(message)" % {"username": u, "message": m}
-
-    # Yes
-    "{} * {} = {}".format(item1, item2, item1 * item2)
-    "{username}: {message}".format(username=u, message=m)
-    ```
-
 * Use proper indentation:
 
     ```python
@@ -88,10 +72,11 @@ nor lists.
 <a name="javascript"></a>
 ### JavaScript
 * Two spaces indentation.
-* Split your app into modules / objects.
 * Single quotes are preferred over double. Reason: HTML uses double quotes.
 * Use `void 0` instead of `undefined`, because `undefined` could have been
 redefined.
+* Write code in functional style with minimum side effects. See coffeescript
+section for more info.
 * Don't use function statements. Instead, create anonymous functions and
 assing them to vars.
 
@@ -152,19 +137,6 @@ assing them to vars.
        });
      }
     };
-    ```
-
-* If you're using jQuery (etc), each DOM manipulation should be made through it.
-Reason: library methods would remain compatible across browsers.
-
-    ```javascript
-    // No
-    this.className;
-    document.getElementById('item').value;
-
-    // Yes
-    $('#item').val();
-    $(this).attr('class');
     ```
 
 * Event callback should name event data variable as 'event', not 'e' etc.
@@ -247,8 +219,10 @@ increase with this on some browsers.
 <a name="css"></a>
 ### CSS
 * Two spaces indentation.
-* Use hex colors (e.g. #fff) instead of color names (e.g. white).
+* Use hex or rgb colors (e.g. #fff) instead of color names (e.g. white).
+* [Use `* {box-sizing: border-box;}`](http://paulirish.com/2012/box-sizing-border-box-ftw/).
 * Don't use inline styling.
+* Use only classes for styling most of the time (no #ids, elems etc).
 * Use tree-style indentation.
 
     ```css
