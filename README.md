@@ -394,6 +394,11 @@ increase with this on some browsers.
 * Commit atomicity:
     * Break up logical changes
     * Make whitespace changes separately
+* Use namespaces:
+    * Use `versions/x.y` namespace for supporting old versions.
+    Examples: `versions/1.0`, `versions/2.1`.
+    * Use `topics/topic-name` namespace.
+
 
 <a name="license"></a>
 ## License
