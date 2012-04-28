@@ -28,13 +28,12 @@ Code style guides for various programming languages
 * Follow
 [polarmobile/coffeescript-style-guide](https://github.com/polarmobile/coffeescript-style-guide).
 * Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
-* Calling functions without parentheses is preferred in the most cases.
 * Limit lines to 80 chars.
 * Write code in a functional style. Less side effects == less errors. Examples:
     * Use array methods (`Array::forEach`, `Array::filter` etc.) instead of
     `for..in` loops. `for` loops don't create scope so it's easier to
     introduce bugs. `Object.keys()` are preferred to `for..of`.
-    * Avoid `break`-s and `continue`-s (which are rebranded GOTOs).
+    * Avoid `break`-s and `continue`-s.
     * Try to not redefine vars where it's possible.
     * Same applies to JavaScript.
 
@@ -78,7 +77,7 @@ redefined.
 * Write code in functional style with minimum side effects. See coffeescript
 section for more info.
 * Don't use function statements. Instead, create anonymous functions and
-assing them to vars.
+assing them to vars for consistency with other vars.
 
     ```javascript
     // No
@@ -89,7 +88,7 @@ assing them to vars.
     ```
 
 * Avoid global vars where you can. If you use them, specify it explicitly.
-    
+
     ```javascript
     window.globalVar = ...;
     ```
@@ -210,7 +209,7 @@ increase with this on some browsers.
     ```
 
 * Avoid bitwise operators if possible.
-* Avoid `with`, `continue`, implied typecasting.
+* Avoid `with` & implied typecasting.
 
 <a name="html"></a>
 ### HTML
