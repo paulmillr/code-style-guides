@@ -397,8 +397,9 @@ increase with this on some browsers.
 * Use namespaces:
     * Use `versions/x.y` namespace for supporting old versions.
     Examples: `versions/1.0`, `versions/2.1`.
-    * Use `topics/topic-name` namespace.
-
+    * Use `topics/topic-name` namespace every time you
+    want to create a pull request and just in everyday. Examples:
+    `topics/fix-fs-utils`, `topics/add-reddit-button`.
 
 <a name="license"></a>
 ## License
