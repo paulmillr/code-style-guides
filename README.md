@@ -13,7 +13,6 @@ Code style guides for various programming languages
 * [Other](#other)
 * [License](#license)
 
-<a name="all-languages"></a>
 ### All languages
 * Readability counts.
 * Be consistent.
@@ -23,7 +22,6 @@ Code style guides for various programming languages
 * Simple is better than complex.
 * Add blank line to the end of every file.
 
-<a name="coffeescript"></a>
 ### CoffeeScript
 * Follow
 [polarmobile/coffeescript-style-guide](https://github.com/polarmobile/coffeescript-style-guide).
@@ -37,12 +35,10 @@ Code style guides for various programming languages
     * Try to not redefine vars where it's possible.
     * Same applies to JavaScript.
 
-<a name="ruby"></a>
 ### Ruby
 * Follow [bbatsov/ruby-style-guide](https://github.com/bbatsov/ruby-style-guide).
 * Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
 
-<a name="python"></a>
 ### Python
 * Follow official code style guide — [PEP8](http://www.python.org/dev/peps/pep-0008/).
 * Use proper indentation:
@@ -68,7 +64,6 @@ Code style guides for various programming languages
     )
     ```
 
-<a name="javascript"></a>
 ### JavaScript
 * Two spaces indentation.
 * Single quotes are preferred over double. Reason: HTML uses double quotes.
@@ -211,11 +206,9 @@ increase with this on some browsers.
 * Avoid bitwise operators if possible.
 * Avoid `with` & implied typecasting.
 
-<a name="html"></a>
 ### HTML
 * Two spaces indentation.
 
-<a name="css"></a>
 ### CSS
 * Two spaces indentation.
 * Use hex or rgb colors (e.g. #fff) instead of color names (e.g. white).
@@ -336,11 +329,9 @@ increase with this on some browsers.
     #thing
     ```
 
-<a name="scala"></a>
 ### Scala
 * Follow [official language style guide](http://davetron5000.github.com/scala-style/index.html).
 
-<a name="erlang"></a>
 ### Erlang
 * Follow the official [Programming Rules and Conventions](http://www.erlang.se/doc/programming_rules.shtml).
 * Use types and function specifications and discrepancy analysis.
@@ -370,7 +361,6 @@ increase with this on some browsers.
         Acc.
     ```
 
-<a name="other"></a>
 ### Other
 * Structure your commit message like this:
 
@@ -400,7 +390,6 @@ increase with this on some browsers.
     want to create a pull request and just in everyday. Examples:
     `topics/fix-fs-utils`, `topics/add-reddit-button`.
 
-<a name="license"></a>
 ## License
 The MIT License (MIT)
 
