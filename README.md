@@ -21,6 +21,7 @@ Code style guides for various programming languages
 * Beautiful is better than ugly.
 * Simple is better than complex.
 * Add blank line to the end of every file.
+* Limit lines to 80 symbols.
 
 ### CoffeeScript
 * Follow
@@ -40,29 +41,7 @@ Code style guides for various programming languages
 * Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
 
 ### Python
-* Follow official code style guide — [PEP8](http://www.python.org/dev/peps/pep-0008/).
-* Use proper indentation:
-
-    ```python
-    # No
-    client = Client(
-        jid, password, jid.split("@").pop(), registercls=True
-    )
-    # No
-    client = Client(jid, password, jid.split("@").pop(),
-        registercls=True)
-
-    # This is preferred.
-    client = Client(jid, password, jid.split("@").pop(),
-                    registercls=True)
-
-    # If you can't do previous (ex.: >80 chars), do this:
-    client = Client(
-        jid, password,
-        jid.split("@").pop(),
-        registercls=True
-    )
-    ```
+* Follow [PEP8](http://www.python.org/dev/peps/pep-0008/).
 
 ### JavaScript
 * Two spaces indentation.
@@ -86,28 +65,6 @@ assing them to vars for consistency with other vars.
 
     ```javascript
     window.globalVar = ...;
-    ```
-
-* Try avoiding ternary operators, they're harder to debug.
-* Use K&R braces style.
-
-    ```javascript
-    // No
-    if (a)
-    {
-      ...;
-    }
-    else
-    {
-      ...
-    }
-
-    // Yes
-    if (a) {
-      ...
-    } else {
-      ...
-    }
     ```
 
 * Use one `var` per variable.
@@ -149,9 +106,6 @@ assing them to vars for consistency with other vars.
 
     // Yes
     {a: 'testtest'}
-
-    // Exception: reserved word.
-    {'delete': 'testtest'}
     ```
 
 * Use '===' for comparing instead of '=='. JavaScript is weakly typed
@@ -172,26 +126,6 @@ language, so 5 == '5'. This ambiguity could lead to hard-to-find bugs.
     if (item == null) {
   
     }
-    ```
-
-* Other:
-
-    ```javascript
-    // No
-    $('#contact').hide().filter(function() {return $(this).find('username').length;}).show();
-
-    // Yes
-    $('#contact')
-      .hide()
-      .parent()
-      .toggleClass('selected')
-      .show();
-    ```
-
-* Use "!!" to convert something to boolean value:
-
-    ```javascript
-    var loggedIn = !!$.cookie('user');
     ```
 
 * Cache list length into a variable. You could afford 2x loop performance
@@ -215,6 +149,7 @@ increase with this on some browsers.
 * [Use `* {box-sizing: border-box;}`](http://paulirish.com/2012/box-sizing-border-box-ftw/).
 * Don't use inline styling.
 * Use only classes for styling most of the time (no #ids, elems etc).
+* Profile your selectors with webkit inspector.
 * Use tree-style indentation.
 
     ```css
@@ -224,6 +159,7 @@ increase with this on some browsers.
         padding: 10px;
         background-image: url("../img/signup.png"); }
 
+    /* This looks cool if you use Stylus etc. */
     .chat-page {
       font-size: 0.9em; }
       .identity {
@@ -307,30 +243,8 @@ increase with this on some browsers.
       background: #fff url("../i/bg.png") no-repeat 0 0; }
     ```
 
-* Remember: browser handles selectors RIGHT-TO-LEFT. Write efficient selectors.
-
-    ```css
-    /* Slow */
-    ul li
-    /* Slow, but better than previous. */
-    ul > li
-
-    /* Very slow. */
-    ul li ul li strong
-    [data-hidden="true"]
-    div > [data-hidden="true"]
-
-    /* Also bad, they're overly qualified. */
-    ul#top-nav
-    form#login
-
-    /* OK. */
-    .double.active
-    #thing
-    ```
-
 ### Scala
-* Follow [official language style guide](http://davetron5000.github.com/scala-style/index.html).
+* Follow [official language style guide](http://docs.scala-lang.org/style/).
 
 ### Erlang
 * Follow the official [Programming Rules and Conventions](http://www.erlang.se/doc/programming_rules.shtml).
@@ -383,7 +297,7 @@ increase with this on some browsers.
 * Commit atomicity:
     * Break up logical changes
     * Make whitespace changes separately
-* Use namespaces:
+* Use namespaces in git branches:
     * Use `versions/x.y` namespace for supporting old versions.
     Examples: `versions/1.0`, `versions/2.1`.
     * Use `topics/topic-name` namespace every time you
@@ -393,7 +307,7 @@ increase with this on some browsers.
 ## License
 The MIT License (MIT)
 
-Copyright (c) Paul Miller (http://paulmillr.com)
+Copyright (c) 2012 Paul Miller (http://paulmillr.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
