@@ -5,6 +5,7 @@ Code style guides for various programming languages
 
 * [All languages](#all-languages)
 * [CoffeeScript](#coffeescript)
+* [LiveScript](#livescript)
 * [Ruby](#ruby)
 * [Python](#python)
 * [JavaScript](#javascript)
@@ -35,6 +36,9 @@ Code style guides for various programming languages
     * Avoid `break`-s and `continue`-s.
     * Try to not redefine vars where it's possible.
     * Same applies to JavaScript.
+
+### LiveScript
+* Follow [official style guide](https://github.com/gkz/LiveScript-style-guide).
 
 ### Ruby
 * Follow [bbatsov/ruby-style-guide](https://github.com/bbatsov/ruby-style-guide).
