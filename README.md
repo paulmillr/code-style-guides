@@ -1,5 +1,7 @@
 # Code style guides
-Code style guides for various programming languages
+It is good to write code idiomatically in each language and not bring,
+for example, Python experience to JavaScript. The doc describes idiomatic &
+widely-used by the languages communities styles of coding.
 
 ## Table of contents
 
@@ -28,14 +30,12 @@ Code style guides for various programming languages
 * Follow
 [polarmobile/coffeescript-style-guide](https://github.com/polarmobile/coffeescript-style-guide).
 * Follow [TomDoc](http://tomdoc.org/) as a documentation specification.
-* Limit lines to 80 chars.
 * Write code in a functional style. Less side effects == less errors. Examples:
     * Use array methods (`Array::forEach`, `Array::filter` etc.) instead of
     `for..in` loops. `for` loops don't create scope so it's easier to
     introduce bugs. `Object.keys()` are preferred to `for..of`.
     * Avoid `break`-s and `continue`-s.
-    * Try to not redefine vars where it's possible.
-    * Same applies to JavaScript.
+    * Try to not redefine once defined vars where it's possible.
 
 ### LiveScript
 * Follow [official style guide](https://github.com/gkz/LiveScript-style-guide).
@@ -149,10 +149,11 @@ increase with this on some browsers.
 
 ### CSS
 * Two spaces indentation.
-* Use hex or rgb colors (e.g. #fff) instead of color names (e.g. white).
+* Use lowercase hex colors (e.g. #fff) instead of color names (e.g. white).
 * [Use `* {box-sizing: border-box;}`](http://paulirish.com/2012/box-sizing-border-box-ftw/).
-* Don't use inline styling.
+* Use hyphens between class names, not camelCase or under_scores.
 * Use only classes for styling most of the time (no #ids, elems etc).
+* Don't use inline styling.
 * Profile your selectors with webkit inspector.
 * Use tree-style indentation.
 
@@ -254,30 +255,6 @@ increase with this on some browsers.
 * Follow the official [Programming Rules and Conventions](http://www.erlang.se/doc/programming_rules.shtml).
 * Use types and function specifications and discrepancy analysis.
 * Avoid if-s, throw-s and catch-es whenever possible.
-* Always consider time and memory complexity.
-
-    ```erlang
-    %% DO NOT
-    %% Since the ++ operator copies its left operand, the result will be copied again and again and again...
-    %% leading to quadratic complexity.
-    naive_reverse([H|T]) ->
-        naive_reverse(T)++[H];
-    naive_reverse([]) ->
-        [].
-
-    %% OK
-    naive_but_ok_reverse([H|T], Acc) ->
-        naive_but_ok_reverse(T, [H]++Acc);
-    naive_but_ok_reverse([], Acc) ->
-        Acc.
-
-    %% DO
-    %% This is slightly more efficient because you don't build a list element only to directly copy it.
-    vanilla_reverse([H|T], Acc) ->
-        vanilla_reverse(T, [H|Acc]);
-    vanilla_reverse([], Acc) ->
-        Acc.
-    ```
 
 ### Other
 * Structure your commit message like this:
@@ -301,12 +278,14 @@ increase with this on some browsers.
 * Commit atomicity:
     * Break up logical changes
     * Make whitespace changes separately
-* Use namespaces in git branches:
-    * Use `versions/x.y` namespace for supporting old versions.
-    Examples: `versions/1.0`, `versions/2.1`.
-    * Use `topics/topic-name` namespace every time you
-    want to create a pull request and just in everyday. Examples:
-    `topics/fix-fs-utils`, `topics/add-reddit-button`.
+* Branch naming:
+    * Use hyphens as word separator.
+    * Use namespaces, for example,
+        * `versions/x.y` namespace for supporting old versions.
+        Examples: `versions/1.0`, `versions/2.1`.
+        * `topics/topic-name` namespace every time you
+        want to create a pull request and just in everyday. Use hyphens between words.
+        Examples: `topics/fix-fs-utils`, `topics/add-reddit-button`.
 
 ## License
 The MIT License (MIT)
