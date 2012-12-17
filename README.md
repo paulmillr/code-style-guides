@@ -13,7 +13,7 @@ widely-used by the languages communities styles of coding.
 * [JavaScript](#javascript)
 * [Scala](#scala)
 * [Erlang](#erlang)
-* [Other](#other)
+* [Git](#git)
 * [License](#license)
 
 ### All languages
@@ -256,7 +256,7 @@ increase with this on some browsers.
 * Use types and function specifications and discrepancy analysis.
 * Avoid if-s, throw-s and catch-es whenever possible.
 
-### Other
+### Git
 * Structure your commit message like this:
 
     ```
@@ -268,8 +268,10 @@ increase with this on some browsers.
 * Commit summary:
     * Less than 50 characters
     * What was changed
-    * Imperative present tense (fix, add, change): ("Fix bug 123", "Add 
-    'foobar' command, "Change default timeout to 123")
+    * Imperative present tense (fix, add, change): ("Fix bug 123.", "Add 
+      'foobar' command.", "Change default timeout to 123."), because
+      when it’s more logical for pull request mergers to see changes that
+      have not yet been applied, but will be.
     * End with period
 * Commit description:
     * Wrap at 72 characters
@@ -281,11 +283,11 @@ increase with this on some browsers.
 * Branch naming:
     * Use hyphens as word separator.
     * Use namespaces, for example,
-        * `versions/x.y` namespace for supporting old versions.
-        Examples: `versions/1.0`, `versions/2.1`.
         * `topics/topic-name` namespace every time you
-        want to create a pull request and just in everyday. Use hyphens between words.
-        Examples: `topics/fix-fs-utils`, `topics/add-reddit-button`.
+          want to create a pull request and just in everyday. Use hyphens between words.
+          Examples: `topics/fix-fs-utils`, `topics/add-reddit-button`.
+        * `versions/x.y` namespace for supporting old versions.
+          Examples: `versions/1.0`, `versions/2.1`.
 
 ## License
 The MIT License (MIT)
