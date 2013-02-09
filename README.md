@@ -269,9 +269,13 @@ increase with this on some browsers.
     * Less than 50 characters
     * What was changed
     * Imperative present tense (fix, add, change): ("Fix bug 123.", "Add 
-      'foobar' command.", "Change default timeout to 123."), because
-      when it’s more logical for pull request mergers to see changes that
-      have not yet been applied, but will be.
+      'foobar' command.", "Change default timeout to 123.").
+      Commits in past tense look weird to other developers e.g.
+      the change ain’t happened yet and there’s question like
+      “What will applying the patch do?” and you answer to this shit
+      like “it will *remove utils.wrapMethod.*”.
+      Also it’s
+      [official git style](http://repo.or.cz/w/git.git?a=blob;f=Documentation/SubmittingPatches;hb=HEAD)
     * End with period
 * Commit description:
     * Wrap at 72 characters
