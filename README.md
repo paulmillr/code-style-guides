@@ -58,7 +58,7 @@ assing them to vars for consistency with other vars.
     function doThing(a, b) {return a * b;}
 
     // Yes
-    var doThing = function(a, b) {return a * b;}; 
+    var doThing = function(a, b) {return a * b;};
     ```
 
 * Avoid global vars where you can. If you use them, specify it explicitly.
@@ -124,7 +124,7 @@ language, so 5 == '5'. This ambiguity could lead to hard-to-find bugs.
 
     // Exception: this compares both to 'null' and 'undefined'.
     if (item == null) {
-  
+
     }
     ```
 
@@ -275,7 +275,11 @@ increase with this on some browsers.
         Acc.
     ```
 
-### Other
+### Git
+* Keep your repository clean. Don’t commit big files unless they absolutely
+  require git. Even in this case, prefer storing all big files in a separate
+  submodule. That’s because git history can become very big and it will be pain
+  for others to use the repo.
 * Structure your commit message like this:
 
     ```
@@ -287,7 +291,7 @@ increase with this on some browsers.
 * Commit summary:
     * Less than 50 characters
     * What was changed
-    * Imperative present tense (fix, add, change): ("Fix bug 123", "Add 
+    * Imperative present tense (fix, add, change): ("Fix bug 123", "Add
     'foobar' command, "Change default timeout to 123")
     * End with period
 * Commit description:
