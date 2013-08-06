@@ -24,7 +24,7 @@ widely-used by the languages communities styles of coding.
 * Beautiful is better than ugly.
 * Simple is better than complex.
 * Add blank line to the end of every file.
-* Limit lines to 80 symbols.
+* Limit lines to 80 characters.
 
 ### CoffeeScript
 * Follow
