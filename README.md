@@ -11,6 +11,7 @@ widely-used by the languages communities styles of coding.
 * [Ruby](#ruby)
 * [Python](#python)
 * [JavaScript](#javascript)
+* [Objective-C](#objective-c)
 * [Scala](#scala)
 * [Erlang](#erlang)
 * [Git](#git)
@@ -247,6 +248,10 @@ increase with this on some browsers.
       box-shadow: inset 1px 0 0 #fff;
       background: #fff url("../i/bg.png") no-repeat 0 0; }
     ```
+
+### Objective-C
+* Follow [GitHub style guide](https://github.com/github/objective-c-conventions) which is
+  basically an extract of apple style guide.
 
 ### Scala
 * Follow [official language style guide](http://docs.scala-lang.org/style/).
